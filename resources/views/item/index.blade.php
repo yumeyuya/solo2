@@ -37,6 +37,13 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
+                                    <td>
+                                        <form action="{{ url('items/' . $item->id) }}" method="POST" onsubmit="return confirm('削除しますか？')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">削除</button>
+</form>
+</td>
                                 </tr>
                             @endforeach
                         </tbody>
