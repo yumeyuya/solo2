@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 
+
 class ItemController extends Controller
 {
     /**
@@ -21,17 +22,23 @@ class ItemController extends Controller
     /**
      * 商品一覧
      */
-    public function index()
-    {
-        // 商品一覧取得
-        $items = Item
-            ::where('items.status', 'active')
-            ->select()
-            ->get();
+    public function index(Request $request)
+{
+// キーワードを取得する
+$keyword = $request->input('keyword');
 
-        return view('item.index', compact('items'));
-    }
+// 商品一覧を取得する
+$items = Item
+::where('items.status', 'active')
+->when($keyword, function ($query, $keyword) {
+// 名前がキーワードに部分一致する商品を取得する
+return $query->where('items.name', 'LIKE', "%{$keyword}%");
+})
+->select()
+->get();
 
+return view('item.index', compact('items', 'keyword'));
+}
     /**
      * 商品登録
      */
@@ -68,5 +75,8 @@ public function delete($id)
     return redirect('/items');
 }
 
-}
+/**
+ * 検索機能
+ */
 
+}

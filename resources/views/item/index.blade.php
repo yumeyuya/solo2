@@ -13,9 +13,21 @@
                 <div class="card-header">
                     <h3 class="card-title">商品一覧</h3>
                     <div class="card-tools">
+
+                    <form action="{{ url('items') }}" method="GET" class="input-group input-group-sm">
+        <input type="text" name="keyword" class="form-control float-right" placeholder="検索キーワードを入力">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    
+</div>
+
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
                                 <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
+                               
+
                             </div>
                         </div>
                     </div>
