@@ -1,35 +1,23 @@
-## 商品管理システム
-
-### 環境構築手順
-
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLかPostgreSQLのデータベース作成（名前：item_management）  
-  ローカルでMAMPを使用しているのであれば、MySQL推奨
-* .env にデータベース接続情報追加
+# 商品管理システム
+## 概要
+このシステムでは購入された商品の管理を行うことができます。
+新規登録しログインすることができます。
+データを
+ 登録
+削除
+ 検索できます。
+## 備考
+検索機能は購入したお客様の名前を入力することで画面上部に並び替えてデータを表示します。
+## 開発環境
+- php 7・4
+- mysql8・1・12
+- laravel8・83・27
+## 設計書
+[設計書ページへ](https://drive.google.com/drive/folders/1g7lvGmddYbqbKuvpGR2UkgMyhHOCOi8O?usp=share_link)
+## システム一覧
+[アプリケーションページへ](https://laravel-item-manegement-yuya.herokuapp.com/login)
+## テストアカウント情報
 ```
-例）
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=item_management
-DB_USERNAME=root
-DB_PASSWORD=root
-```
-* APP_KEY生成
-```
-$ php artisan key:generate
-```
-* Composerインストール
-```
-$ composer install
-```
-* フロント環境構築
-```
-$ npm install
-$ npm run dev
-```
-* マイグレーション
-```
-$ php artisan migrate
+メールアドレス : admin@example.com
+パスワード : 12345678
 ```
